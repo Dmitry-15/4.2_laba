@@ -13,12 +13,13 @@ class Payment:
         self.first = first
         self.second = second
         self.third = third
-        self.sum = self.first / self.second * self.third
         if self.first == 0:
             raise ValueError()
 
     def __add__(self, other):
-        return self.sum + other.sum
+        a = self.first / self.second * self.third
+        b = other.first / other.second * other.third
+        return a + b
 
 if __name__ == "__main__":
     num1 = Payment(28500.5, 29, 30)
