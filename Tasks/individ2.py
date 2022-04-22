@@ -16,8 +16,8 @@ class Octal:
     def __init__(self, number):
         self.storage = []
         self.number = str(number)
-        self.limit = 100
-        self.checking_length(self.storage)
+        self.size = 100
+        self.length(self.storage)
         for k in self.number:
             self.storage.append(k)
 
@@ -30,7 +30,7 @@ class Octal:
         sum_lst = []
         for k in sum_str:
             sum_lst.append(k)
-        self.checking_length(sum_lst)
+        self.length(sum_lst)
         return "".join(sum_lst[::-1])
 
     def __sub__(self, other):
@@ -42,7 +42,7 @@ class Octal:
         sum_lst = []
         for k in sum_str:
             sum_lst.append(k)
-        self.checking_length(sum_lst)
+        self.length(sum_lst)
         return "".join(sum_lst[::-1])
 
     def __mul__(self, other):
@@ -54,19 +54,7 @@ class Octal:
         sum_lst = []
         for k in sum_str:
             sum_lst.append(k)
-        self.checking_length(sum_lst)
-        return "".join(sum_lst[::-1])
-
-    def __truediv__(self, other):
-        num1 = self.storage[::-1]
-        num2 = other.storage[::-1]
-        num1 = int("".join(num1), 8)
-        num2 = int("".join(num2), 8)
-        sum_str = str(num1 / num2)
-        sum_lst = []
-        for k in sum_str:
-            sum_lst.append(k)
-        self.checking_length(sum_lst)
+        self.length(sum_lst)
         return "".join(sum_lst[::-1])
 
     def __lt__(self, other):
@@ -83,20 +71,6 @@ class Octal:
         num2 = int("".join(num2), 8)
         return num1 > num2
 
-    def __le__(self, other):
-        num1 = self.storage[::-1]
-        num2 = other.storage[::-1]
-        num1 = int("".join(num1), 8)
-        num2 = int("".join(num2), 8)
-        return num1 <= num2
-
-    def __ge__(self, other):
-        num1 = self.storage[::-1]
-        num2 = other.storage[::-1]
-        num1 = int("".join(num1), 8)
-        num2 = int("".join(num2), 8)
-        return num1 >= num2
-
     def __eq__(self, other):
         num1 = self.storage[::-1]
         num2 = other.storage[::-1]
@@ -104,16 +78,9 @@ class Octal:
         num2 = int("".join(num2), 8)
         return num1 == num2
 
-    def __ne__(self, other):
-        num1 = self.storage[::-1]
-        num2 = other.storage[::-1]
-        num1 = int("".join(num1), 8)
-        num2 = int("".join(num2), 8)
-        return num1 != num2
-
-    def checking_length(self, storage):
+    def length(self, storage):
         length = len(storage)
-        if length > self.limit:
+        if length > self.size:
             raise ValueError()
 
 
@@ -123,10 +90,7 @@ if __name__ == '__main__':
     print(f"r1 + r2 = {r1 + r2}")
     print(f"r1 - r2 = {r1 - r2}")
     print(f"r1 * r2 = {r1 * r2}")
-    print(f"r1 / r2 = {r1 / r2}")
     print(f"r1 < r2 = {r1 < r2}")
     print(f"r1 > r2 = {r1 > r2}")
-    print(f"r1 <= r2 = {r1 <= r2}")
-    print(f"r1 >= r2 = {r1 >= r2}")
     print(f"r1 == r2 = {r1 == r2}")
-    print(f"r1 != r2 = {r1 != r2}")
+

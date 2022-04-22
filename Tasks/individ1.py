@@ -21,7 +21,19 @@ class Payment:
         b = other.first / other.second * other.third
         return a + b
 
+    def __lt__(self, other):
+        a = self.first / self.second * self.third
+        b = other.first / other.second * other.third
+        return a < b
+
+    def __gt__(self, other):
+        a = self.first / self.second * self.third
+        b = other.first / other.second * other.third
+        return a > b
+
 if __name__ == "__main__":
     num1 = Payment(28500.5, 29, 30)
     num2 = Payment(27505.13, 26, 31)
     print(f"Начисленная сумма за 2 месяца: {num1 + num2}")
+    print(f"Сумма за первый месяц меньше, чем за второй: {num1 < num2}")
+    print(f"Сумма за первый месяц больше, чем за второй: {num1 > num2}")
